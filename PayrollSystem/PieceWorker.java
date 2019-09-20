@@ -1,3 +1,7 @@
+/* Name: Enda Kilgarriff
+ * Student ID: 17351606
+ */
+
 // PieceWorker class derived from Employee
 
 public final class PieceWorker extends Employee {

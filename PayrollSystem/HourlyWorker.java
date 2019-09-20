@@ -1,3 +1,7 @@
+/* Name: Enda Kilgarriff
+ * Student ID: 17351606
+ */
+
 // Definition of class HourlyWorker
 
 public final class HourlyWorker extends Employee {

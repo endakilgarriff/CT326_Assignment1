@@ -1,3 +1,7 @@
+/* Name: Enda Kilgarriff
+ * Student ID: 17351606
+ */
+
 // Boss class derived from Employee.
 
 public final class Boss extends Employee {

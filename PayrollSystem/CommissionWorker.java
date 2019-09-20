@@ -1,3 +1,7 @@
+/* Name: Enda Kilgarriff
+ * Student ID: 17351606
+ */
+
 // CommissionWorker class derived from Employee
 
 public final class CommissionWorker extends Employee {

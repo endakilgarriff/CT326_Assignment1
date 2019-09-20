@@ -1,3 +1,7 @@
+/* Name: Enda Kilgarriff
+ * Student ID: 17351606
+ */
+
 // Abstract base class Employee.
 
 public abstract class Employee {
