@@ -24,7 +24,7 @@ public abstract class Employee {
         counter++;
         employeeId = counter;
     }
-    
+    //Overloaded constructor to handle joinDate during development
     public Employee(String first, String last, String date) {
         firstName = first;
         lastName = last;

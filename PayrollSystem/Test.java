@@ -37,8 +37,7 @@ public class Test {
         output += employee.toString() + " earned $"
                 + precision2.format(employee.earnings()) + "\n"
                 + boss.toString() + " earned $"
-                + precision2.format(boss.earnings()) + "\n"
-                + employee.getJoinDate();
+                + precision2.format(boss.earnings()) + "\n";
 
         // Employee reference to a CommissionWorker
         employee = commissionWorker;
