@@ -28,8 +28,12 @@ public final class PieceWorker extends Employee {
     }
 
     // determine PieceWorker's earnings
-    public double earnings() {
-        return quantity * wagePerPiece;
+    public double earnings() throws Exception {
+    	double wagePerHour = (quantity * wagePerPiece)/40;
+    	if(wagePerHour < getMinimumWage()) {
+    		throw new Exception("Piece worker cannot earn less than €10 per hour");
+    	}
+    	return quantity * wagePerPiece;
     }
 
     public String toString() {

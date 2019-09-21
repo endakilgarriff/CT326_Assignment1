@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 public class Test {
 
     // test Employee hierarchy
-    public static void main(String args[]) {
+    public static void main(String args[]) throws Exception {
         Employee employee; // superclass reference
         String output = "";
         ArrayList<Employee> employeeArray = new ArrayList<Employee>();
@@ -30,24 +30,38 @@ public class Test {
 
         HourlyWorker hourlyWorker =
                 new HourlyWorker("Karen", "Price", "2014-01-13", 13.75, 40);
-
+        
+        CommissionWorker underpaidWorker = new
+        		CommissionWorker("UnderPaid", "Employee", "2019-09-21", 150, 1, 150);
         DecimalFormat precision2 = new DecimalFormat("0.00");
         
+        // Add existing employees to array 
         employeeArray.add(boss);
         employeeArray.add(commissionWorker);
         employeeArray.add(pieceWorker);
         employeeArray.add(hourlyWorker);
+        employeeArray.add(underpaidWorker);
         
+        // Calculate the weekly payroll for each employee
         for(Employee worker :employeeArray) {
         	employee = worker;
+        	try {
         	double weeklyPay = employee.earnings();
 	        	if(employee.getJoinDate().getYear() > 5) {
 	        		weeklyPay += 50;
 	        	}
-        	output += employee.toString() + " earned $"
-                  + precision2.format(weeklyPay) + "\n";
+	        	
+	    	    // Assemble string for each employee    
+	            output += employee.toString() + " earned $"
+	                      + precision2.format(weeklyPay) + "\n";
+	            
+        	}
+        	catch(Exception exception) {
+        		System.out.println(exception);
+        	}
         }
         
+        // Dialog box with employee names and wage details
         JOptionPane.showMessageDialog(null, output,
                 "Demonstrating Polymorphism",
                 JOptionPane.INFORMATION_MESSAGE);

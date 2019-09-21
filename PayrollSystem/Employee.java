@@ -9,11 +9,12 @@ import org.joda.time.LocalDate;
 
 public abstract class Employee {
 
-    private String firstName;
+	private String firstName;
     private String lastName;
     LocalDate joinDate = new LocalDate();
     private static int employeeId = 0; 
     private int counter = 0;
+    private double minimumWage = 10;
 
     // Constructor
     public Employee(String first, String last, String date) {
@@ -51,6 +52,11 @@ public abstract class Employee {
     public int getNumEmployees() {
     	return counter;
     }
+    
+    public double getMinimumWage() {
+    	return minimumWage;
+    }
+    
+    public abstract double earnings() throws Exception;
 
-    public abstract double earnings();
 }

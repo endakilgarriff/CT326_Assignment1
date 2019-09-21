@@ -20,7 +20,11 @@ public final class Boss extends Employee {
     }
 
     // get Boss's pay
-    public double earnings() {
+    public double earnings() throws Exception {
+    	double wagePerHour = weeklySalary/40;
+    	if(wagePerHour < getMinimumWage()) {
+    		throw new Exception("Boss cannot earn less than €10 per hour");
+    	}
         return weeklySalary;
     }
 

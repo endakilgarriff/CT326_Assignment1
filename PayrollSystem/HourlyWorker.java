@@ -8,6 +8,7 @@ public final class HourlyWorker extends Employee {
 
     private double wage; // wage per hour
     private double hours; // hours worked for week
+    private double wagePerHour;
 
     // constructor for class HourlyWorker
     public HourlyWorker(String first, String last, String joinDate,
@@ -15,6 +16,7 @@ public final class HourlyWorker extends Employee {
         super(first, last, joinDate); // call superclass constructor
         setWage(wagePerHour);
         setHours(hoursWorked);
+        this.wagePerHour = wagePerHour;
     }
 
     // Set the wage
@@ -29,9 +31,13 @@ public final class HourlyWorker extends Employee {
     }
 
     // Get the HourlyWorker's pay
-    public double earnings() {
-        return wage * hours;
+    public double earnings() throws Exception {
+    	if(wagePerHour < getMinimumWage()) {
+    		throw new Exception("Hourly worker cannot earn less than €10 per hour");
+    	}
+        return  wage * hours;
     }
+    
 
     public String toString() {
         return "Hourly worker: " + super.toString();
