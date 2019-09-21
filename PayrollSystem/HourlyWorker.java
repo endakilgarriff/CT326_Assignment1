@@ -10,9 +10,9 @@ public final class HourlyWorker extends Employee {
     private double hours; // hours worked for week
 
     // constructor for class HourlyWorker
-    public HourlyWorker(String first, String last,
+    public HourlyWorker(String first, String last, String joinDate,
             double wagePerHour, double hoursWorked) {
-        super(first, last); // call superclass constructor
+        super(first, last, joinDate); // call superclass constructor
         setWage(wagePerHour);
         setHours(hoursWorked);
     }

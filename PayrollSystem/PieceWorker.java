@@ -10,9 +10,9 @@ public final class PieceWorker extends Employee {
     private int quantity; // output for week
 
     // constructor for class PieceWorker
-    public PieceWorker(String first, String last,
+    public PieceWorker(String first, String last, String joinDate,
             double wage, int numberOfItems) {
-        super(first, last); // call superclass constructor
+        super(first, last, joinDate); // call superclass constructor
         setWage(wage);
         setQuantity(numberOfItems);
     }

@@ -11,9 +11,9 @@ public final class CommissionWorker extends Employee {
     private int quantity; // total items sold for week
 
     // constructor for class CommissionWorker
-    public CommissionWorker(String first, String last,
+    public CommissionWorker(String first, String last, String joinDate,
             double salary, double commission, int quantity) {
-        super(first, last); // call superclass constructor
+        super(first, last, joinDate); // call superclass constructor
         setSalary(salary);
         setCommission(commission);
         setQuantity(quantity);

@@ -6,6 +6,7 @@
 
 // Java core packages
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 // Java extension packages
 import javax.swing.JOptionPane;
@@ -16,54 +17,37 @@ public class Test {
     public static void main(String args[]) {
         Employee employee; // superclass reference
         String output = "";
-
+        ArrayList<Employee> employeeArray = new ArrayList<Employee>();
+        
         Boss boss = new Boss("John", "Smith", "2011-06-17", 800.0);
 
         CommissionWorker commissionWorker =
                 new CommissionWorker(
-                "Sue", "Jones", 400.0, 3.0, 150);
+                "Sue", "Jones", "2013-02-14", 400.0, 3.0, 150);
 
         PieceWorker pieceWorker =
-                new PieceWorker("Bob", "Lewis", 2.5, 200);
+                new PieceWorker("Bob", "Lewis", "2017-11-03", 2.5, 200);
 
         HourlyWorker hourlyWorker =
-                new HourlyWorker("Karen", "Price", 13.75, 40);
+                new HourlyWorker("Karen", "Price", "2014-01-13", 13.75, 40);
 
         DecimalFormat precision2 = new DecimalFormat("0.00");
-
-// Employee reference to a Boss
-        employee = boss;
-
-        output += employee.toString() + " earned $"
-                + precision2.format(employee.earnings()) + "\n"
-                + boss.toString() + " earned $"
-                + precision2.format(boss.earnings()) + "\n";
-
-        // Employee reference to a CommissionWorker
-        employee = commissionWorker;
-
-        output += employee.toString() + " earned $"
-                + precision2.format(employee.earnings()) + "\n"
-                + commissionWorker.toString() + " earned $"
-                + precision2.format(
-                commissionWorker.earnings()) + "\n";
-
-        // Employee reference to a PieceWorker
-        employee = pieceWorker;
-
-        output += employee.toString() + " earned $"
-                + precision2.format(employee.earnings()) + "\n"
-                + pieceWorker.toString() + " earned $"
-                + precision2.format(pieceWorker.earnings()) + "\n";
-
-// Employee reference to an HourlyWorker
-        employee = hourlyWorker;
-
-        output += employee.toString() + " earned $"
-                + precision2.format(employee.earnings()) + "\n"
-                + hourlyWorker.toString() + " earned $"
-                + precision2.format(hourlyWorker.earnings()) + "\n";
-
+        
+        employeeArray.add(boss);
+        employeeArray.add(commissionWorker);
+        employeeArray.add(pieceWorker);
+        employeeArray.add(hourlyWorker);
+        
+        for(Employee worker :employeeArray) {
+        	employee = worker;
+        	double weeklyPay = employee.earnings();
+	        	if(employee.getJoinDate().getYear() > 5) {
+	        		weeklyPay += 50;
+	        	}
+        	output += employee.toString() + " earned $"
+                  + precision2.format(weeklyPay) + "\n";
+        }
+        
         JOptionPane.showMessageDialog(null, output,
                 "Demonstrating Polymorphism",
                 JOptionPane.INFORMATION_MESSAGE);

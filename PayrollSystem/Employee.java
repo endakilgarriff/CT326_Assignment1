@@ -6,8 +6,6 @@
 
 // Joda-time LocalDate Library
 import org.joda.time.LocalDate;
-//import org.joda.time.format.DateTimeFormatter;
-
 
 public abstract class Employee {
 
@@ -17,14 +15,7 @@ public abstract class Employee {
     private static int employeeId = 0; 
     private int counter = 0;
 
-    // constructor
-    public Employee(String first, String last) {
-        firstName = first;
-        lastName = last;
-        counter++;
-        employeeId = counter;
-    }
-    //Overloaded constructor to handle joinDate during development
+    // Constructor
     public Employee(String first, String last, String date) {
         firstName = first;
         lastName = last;
@@ -48,18 +39,17 @@ public abstract class Employee {
         return lastName;
     }
     
-    //Get start date object
-    public String printJoinDate() {
-    	String printJoinDate = joinDate.toString();
-    	return printJoinDate;
-    }
-    
+    // get join date
     public LocalDate getJoinDate() {
     	return joinDate;
     }
 
     public String toString() {
         return firstName + ' ' + lastName;
+    }
+    
+    public int getNumEmployees() {
+    	return counter;
     }
 
     public abstract double earnings();
