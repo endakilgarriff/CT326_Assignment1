@@ -10,9 +10,6 @@ import java.text.DecimalFormat;
 // Java extension packages
 import javax.swing.JOptionPane;
 
-// Joda-Time Library
-
-
 public class Test {
 
     // test Employee hierarchy
@@ -20,7 +17,7 @@ public class Test {
         Employee employee; // superclass reference
         String output = "";
 
-        Boss boss = new Boss("John", "Smith", 800.0);
+        Boss boss = new Boss("John", "Smith", "2011-06-17", 800.0);
 
         CommissionWorker commissionWorker =
                 new CommissionWorker(
@@ -40,7 +37,8 @@ public class Test {
         output += employee.toString() + " earned $"
                 + precision2.format(employee.earnings()) + "\n"
                 + boss.toString() + " earned $"
-                + precision2.format(boss.earnings()) + "\n";
+                + precision2.format(boss.earnings()) + "\n"
+                + employee.getJoinDate();
 
         // Employee reference to a CommissionWorker
         employee = commissionWorker;
