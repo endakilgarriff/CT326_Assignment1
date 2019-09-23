@@ -6,7 +6,6 @@
 
 // Java core packages
 import java.text.DecimalFormat;
-//import java.util.ArrayList;
 
 // Java extension packages
 import javax.swing.JOptionPane;
@@ -18,22 +17,6 @@ public class Test {
         Employee employee; // superclass reference
         String output = "";
         Employee[] employeeArray = new Employee[5];
-//        ArrayList<Employee> employeeArray = new ArrayList<Employee>();
-        
-//        Boss boss = new Boss("John", "Smith", "2011-06-17", 800.0);
-//
-//        CommissionWorker commissionWorker =
-//                new CommissionWorker( "Sue", "Jones", "2013-02-14", 400.0, 3.0, 150);
-//
-//        PieceWorker pieceWorker =
-//                new PieceWorker("Bob", "Lewis", "2017-11-03", 2.5, 200);
-//
-//        HourlyWorker hourlyWorker =
-//                new HourlyWorker("Karen", "Price", "2014-01-13", 13.75, 40);
-//        
-//        CommissionWorker underpaidWorker = new
-//        		CommissionWorker("UnderPaid", "Employee", "2019-09-21", 150, 1, 150);
-        DecimalFormat precision2 = new DecimalFormat("0.00");
         
         // Add existing employees to array 
         employeeArray[0] = new Boss("John", "Smith", "2011-06-17", 800.0);
@@ -41,11 +24,8 @@ public class Test {
         employeeArray[2] = new CommissionWorker( "Sue", "Jones", "2013-02-14", 400.0, 3.0, 150);
         employeeArray[3] = new HourlyWorker("Karen", "Price", "2014-01-13", 13.75, 40);
         employeeArray[4] = new CommissionWorker("UnderPaid", "Employee", "2019-09-21", 150, 1, 150);
-//        employeeArray.add(boss);
-//        employeeArray.add(commissionWorker);
-//        employeeArray.add(pieceWorker);
-//        employeeArray.add(hourlyWorker);
-//        employeeArray.add(underpaidWorker);
+        
+        DecimalFormat precision2 = new DecimalFormat("0.00");
         
         // Calculate the weekly payroll for each employee
         for(Employee worker :employeeArray) {
