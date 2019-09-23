@@ -6,7 +6,7 @@
 
 // Java core packages
 import java.text.DecimalFormat;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 // Java extension packages
 import javax.swing.JOptionPane;
@@ -52,7 +52,8 @@ public class Test {
         	employee = worker;
         	try {
         	double weeklyPay = employee.earnings();
-	        	if(employee.getJoinDate().getYear() > 5) {
+//	        	if(employee.getJoinDate().getYear() > 5) {
+        	if(employee.getJoinDate().getYear() > 5) {
 	        		weeklyPay += 50;
 	        	}
 	        	
