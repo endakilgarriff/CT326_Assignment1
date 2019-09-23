@@ -58,5 +58,10 @@ public abstract class Employee {
     }
     
     public abstract double earnings() throws Exception;
+    
+    public String payroll() {
+    	
+    	return "void";
+    }
 
 }
