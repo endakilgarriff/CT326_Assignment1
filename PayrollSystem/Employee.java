@@ -6,6 +6,7 @@
 
 // Joda-time LocalDate Library
 import org.joda.time.LocalDate;
+import java.text.DecimalFormat;
 
 public abstract class Employee {
 
@@ -15,6 +16,8 @@ public abstract class Employee {
     private static int employeeId = 0; 
     private int counter = 0;
     private double minimumWage = 10;
+    
+    DecimalFormat precision2 = new DecimalFormat("0.00");
 
     // Constructor
     public Employee(String first, String last, String date) {
@@ -59,9 +62,22 @@ public abstract class Employee {
     
     public abstract double earnings() throws Exception;
     
-    public String payroll() {
+    public String getPayroll() {
+    	String payroll = "";
     	
-    	return "void";
+    	try {
+	    		double weeklyPay = earnings();
+	    		if(getJoinDate().getYear() > 5) {
+	    			weeklyPay += 50;
+	    		}  
+	    	payroll = toString() + " earned: $" 
+	    		+ precision2.format(weeklyPay) + "\n";
+	    	return payroll;
+    	}
+    	catch(Exception exception) {
+    		System.out.println(exception);
+    	}
+    	return payroll;
     }
 
 }
