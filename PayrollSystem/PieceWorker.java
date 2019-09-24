@@ -29,9 +29,6 @@ public final class PieceWorker extends Employee {
 
     // determine PieceWorker's earnings
     public double earnings() throws PayrollException {
-//    	if(quantity * wagePerPiece < getMinimumWage()) {
-//    		throw new PayrollException(toString() + ' ' + "cannot earn less than €10 per hour. Please resolve this issue \n");
-//    	}
     	return quantity * wagePerPiece;
     }
 
