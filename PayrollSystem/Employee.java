@@ -12,15 +12,18 @@
 import org.joda.time.LocalDate;
 import org.joda.time.Period;
 
+// Java core packages
 import java.text.DecimalFormat;
 
 public abstract class Employee {
+	
+	//Initialize variables
 	private int employeeId = 0;
 	private static int counter = 1000;
 	private String firstName;
     private String lastName;
-    LocalDate joinDate = new LocalDate();
-    LocalDate now = LocalDate.now();
+    LocalDate joinDate = new LocalDate(); 	
+    LocalDate now = LocalDate.now();		// Current date object for 5 year check
     
     DecimalFormat precision2 = new DecimalFormat("0.00");
 
@@ -28,11 +31,11 @@ public abstract class Employee {
     public Employee(String first, String last, String date) {
         firstName = first;
         lastName = last;
-        joinDate = LocalDate.parse(date); 
+        joinDate = LocalDate.parse(date); // Parse the date into (year, month, day) joinDate object 
         employeeId = counter;
         counter++;
     }
-    
+    // getter methods 
     // get Employee ID
     public int getEmployeeId() {
     	return employeeId;
@@ -65,32 +68,36 @@ public abstract class Employee {
     	return 40*10;
     }
     
+
     public abstract double earnings() throws PayrollException;
     
+    // getPayroll method to check if employee is entitled to bonus  
+    //	and if they are underpaid.
+      
     public String getPayroll() throws PayrollException{
     	String payroll = "";
     	Period period = new Period(now, joinDate);
-    	long diff = Math.abs(period.getYears());
+    	long diff = Math.abs(period.getYears()); // calculate the difference between 
+    											  // current date and employee join date
     	
     	try {
-	    		double weeklyPay = earnings();
-	    		if(diff > 5) {
+	    	double weeklyPay = earnings();
+	    	if(diff > 5) {
 	    			weeklyPay += 50;
-	    		} 
-	    		String employee = toString();
+	    	} 
+	    	
+	    	String employee = toString();
 	    	payroll = toString() + " earned: $" 
-	    		+ precision2.format(weeklyPay) + "\n";
+	    				+ precision2.format(weeklyPay) + "\n";
 
-	    		if(weeklyPay < getMinimumWage()) {
-
-	    			throw new PayrollException(employee);
-	    		}
+	    	if(weeklyPay < getMinimumWage()) {
+	    		throw new PayrollException(employee);
+	    	}
 	    	return payroll;
 	    	
-    	} 	catch(PayrollException exp) {
-	    		payroll = exp.toString();
-	    		return payroll;
-    		}
+    	}catch(PayrollException exp) {
+	    	payroll = exp.toString();
+	    	return payroll;
     	}
-
+    }
 }
