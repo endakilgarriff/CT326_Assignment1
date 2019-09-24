@@ -31,9 +31,9 @@ public final class HourlyWorker extends Employee {
     }
 
     // Get the HourlyWorker's pay
-    public double earnings() throws Exception {
+    public double earnings() throws PayrollException {
     	if(wagePerHour < getMinimumWage()) {
-    		throw new Exception("Hourly worker cannot earn less than €10 per hour");
+    		throw new PayrollException(toString() + ' ' + "cannot earn less than €10 per hour. Please resolve this issue \n");
     	}
         return  wage * hours;
     }

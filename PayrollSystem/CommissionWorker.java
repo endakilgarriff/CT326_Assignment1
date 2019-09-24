@@ -35,10 +35,10 @@ public final class CommissionWorker extends Employee {
     }
 
     // determine CommissionWorker's earnings
-    public double earnings() throws Exception {
+    public double earnings() throws PayrollException {
     	double wagePerHour = salary/40;
     	if(wagePerHour < getMinimumWage()) {
-    		throw new Exception("Commission worker cannot earn less than €10 per hour");
+    		throw new PayrollException(toString() + ' ' + "cannot earn less than €10 per hour. Please resolve this issue \n");
     	}
         return salary + commission * quantity;
     }

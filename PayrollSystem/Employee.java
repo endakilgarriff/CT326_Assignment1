@@ -15,13 +15,13 @@ import org.joda.time.Period;
 import java.text.DecimalFormat;
 
 public abstract class Employee {
-
+	private int employeeId = 0;
+	private static int counter = 0;
 	private String firstName;
     private String lastName;
     LocalDate joinDate = new LocalDate();
     LocalDate now = LocalDate.now();
-    private static int employeeId = 0; 
-    private int counter = 0;
+
     private double minimumWage = 10;
     
     DecimalFormat precision2 = new DecimalFormat("0.00");
@@ -56,7 +56,7 @@ public abstract class Employee {
     }
 
     public String toString() {
-        return firstName + ' ' + lastName;
+        return "Employee ID: " + employeeId + ' ' +firstName + ' ' + lastName;
     }
     
     public int getNumEmployees() {
@@ -67,26 +67,26 @@ public abstract class Employee {
     	return minimumWage;
     }
     
-    public abstract double earnings() throws Exception;
+    public abstract double earnings() throws PayrollException;
     
-    public String getPayroll() {
+    public String getPayroll() throws PayrollException{
     	String payroll = "";
     	Period period = new Period(now, joinDate);
     	long diff = Math.abs(period.getYears());
+    	
     	try {
 	    		double weeklyPay = earnings();
 	    		if(diff > 5) {
-	    			System.out.printf("Years between: %d", diff);
 	    			weeklyPay += 50;
 	    		}  
 	    	payroll = toString() + " earned: $" 
 	    		+ precision2.format(weeklyPay) + "\n";
 	    	return payroll;
     	}
-    	catch(Exception exception) {
-    		System.out.println(exception);
+    	catch(PayrollException exp) {
+    		
     	}
-    	return payroll;
-    }
+	    	return payroll;
+    	}
 
 }

@@ -22,14 +22,20 @@ public class Test {
         employeeArray[3] = new CommissionWorker("UnderPaid", "Employee", "2019-09-21", 150, 1, 150);
         employeeArray[4] = new HourlyWorker("Karen", "Price", "2014-01-13", 13.75, 40);
         
-        // Calculate the weekly payroll for each employee
-        for(Employee employee :employeeArray) {
-        	output += employee.getPayroll();
+        try {
+	        // Calculate the weekly payroll for each employee
+	        for(Employee employee :employeeArray) {
+	        	output += employee.getPayroll();
+	        }
+        }
+        
+        catch(PayrollException execption) {
+        	
         }
         
         // Dialog box with employee names and wage details
         JOptionPane.showMessageDialog(null, output,
-                "Entire Payroll",
+                "Payroll",
                 JOptionPane.INFORMATION_MESSAGE);
 
         System.exit(0);
