@@ -21,15 +21,14 @@ public final class Boss extends Employee {
 
     // get Boss's pay
     public double earnings()  throws PayrollException{
-    	double wagePerHour = weeklySalary/40;
-    	if(wagePerHour < getMinimumWage()) {
-    		try {
-				throw new PayrollException(toString() + ' ' + "cannot earn less than €10 per hour. Please resolve this issue \n");
-			} catch (PayrollException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-    	}
+//    	if(weeklySalary < getMinimumWage()) {
+//    		try {
+//				throw new PayrollException(toString() + ' ' + "cannot earn less than €10 per hour. Please resolve this issue \n");
+//			} catch (PayrollException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//    	}
         return weeklySalary;
     }
 

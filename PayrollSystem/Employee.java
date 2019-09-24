@@ -16,13 +16,11 @@ import java.text.DecimalFormat;
 
 public abstract class Employee {
 	private int employeeId = 0;
-	private static int counter = 0;
+	private static int counter = 1000;
 	private String firstName;
     private String lastName;
     LocalDate joinDate = new LocalDate();
     LocalDate now = LocalDate.now();
-
-    private double minimumWage = 10;
     
     DecimalFormat precision2 = new DecimalFormat("0.00");
 
@@ -31,8 +29,8 @@ public abstract class Employee {
         firstName = first;
         lastName = last;
         joinDate = LocalDate.parse(date); 
-        counter++;
         employeeId = counter;
+        counter++;
     }
     
     // get Employee ID
@@ -56,7 +54,7 @@ public abstract class Employee {
     }
 
     public String toString() {
-        return "Employee ID: " + employeeId + ' ' +firstName + ' ' + lastName;
+        return firstName + ' ' + lastName +  " ID: " + ' ' + employeeId + " - ";
     }
     
     public int getNumEmployees() {
@@ -64,7 +62,7 @@ public abstract class Employee {
     }
     
     public double getMinimumWage() {
-    	return minimumWage;
+    	return 40*10;
     }
     
     public abstract double earnings() throws PayrollException;
@@ -74,19 +72,32 @@ public abstract class Employee {
     	Period period = new Period(now, joinDate);
     	long diff = Math.abs(period.getYears());
     	
-    	try {
+//    	try {
 	    		double weeklyPay = earnings();
 	    		if(diff > 5) {
 	    			weeklyPay += 50;
-	    		}  
-	    	payroll = toString() + " earned: $" 
-	    		+ precision2.format(weeklyPay) + "\n";
+	    		}
+	    		else if(weeklyPay < getMinimumWage()){
+	    			throw new PayrollException(toString());
+	    		}
+	    		else {
+		    		payroll = toString() + " earned: $" 
+		    	    		+ precision2.format(weeklyPay) + "\n";
+	    		}
+	    			
+//	    		String employee = toString();
+	    		
+//	    		if(weeklyPay < getMinimumWage()) {
+////	    			throw new PayrollException();
+//	    			
+//	    		}
+	    		
 	    	return payroll;
-    	}
-    	catch(PayrollException exp) {
-    		
-    	}
-	    	return payroll;
+	    	
+//    	} 	catch(PayrollException exp) {
+////	    		payroll = toString() + exp.toString();
+//	    		return payroll;
+//    		}
     	}
 
 }

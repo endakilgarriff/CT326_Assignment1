@@ -1,13 +1,13 @@
 
 public class PayrollException extends Exception{
 
-	private String underpayed;
+	String underpaid;
 	
-	PayrollException(String underpayedException){
-		underpayedException = underpayed;
+	PayrollException(String employee){
+		underpaid = employee;
 	}
 	
 	public String toString() {
-		return (underpayed + " is earning less than €10 an hour. This is illegal and should be resolved immediatly") ;
+		return (underpaid + " is earning less than €10 an hour. This should be resolved immediatly \n") ;
 	}
 }
