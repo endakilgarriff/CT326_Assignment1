@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 public class Test {
 
     // test Employee hierarchy
-    public static void main(String args[]) throws PayrollException {
+    public static void main(String args[]) throws Exception {
         String output = "";
         Employee[] employeeArray = new Employee[6];
         
@@ -23,16 +23,10 @@ public class Test {
         employeeArray[4] = new HourlyWorker("Karen", "Price", "2014-01-13", 13.75, 40);
         employeeArray[5] = new HourlyWorker("UnderPaid", "Employee", "2019-09-21", 7, 40);
         
-        	try {
         	     // Calculate the weekly payroll for each employee
     	        for(Employee employee :employeeArray) {
-    	        	output += employee.getPayroll();
-    	        	
+    	        	output += employee.getPayroll();	
     	        }
-    	        
-        	}catch(PayrollException e) {
-        		output += e.toString();
-        	}
         
         // Dialog box with employee names and wage details
         JOptionPane.showMessageDialog(null, output,

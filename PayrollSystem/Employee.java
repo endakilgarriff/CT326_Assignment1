@@ -54,8 +54,8 @@ public abstract class Employee {
     }
 
     public String toString() {
-        return firstName + ' ' + lastName +  " ID: " + ' ' + employeeId + " - ";
-    }
+        return firstName + ' ' + lastName + " ID: " + employeeId  + " - ";
+    } 
     
     public int getNumEmployees() {
     	return counter;
@@ -72,32 +72,25 @@ public abstract class Employee {
     	Period period = new Period(now, joinDate);
     	long diff = Math.abs(period.getYears());
     	
-//    	try {
+    	try {
 	    		double weeklyPay = earnings();
 	    		if(diff > 5) {
 	    			weeklyPay += 50;
+	    		} 
+	    		String employee = toString();
+	    	payroll = toString() + " earned: $" 
+	    		+ precision2.format(weeklyPay) + "\n";
+
+	    		if(weeklyPay < getMinimumWage()) {
+
+	    			throw new PayrollException(employee);
 	    		}
-	    		else if(weeklyPay < getMinimumWage()){
-	    			throw new PayrollException(toString());
-	    		}
-	    		else {
-		    		payroll = toString() + " earned: $" 
-		    	    		+ precision2.format(weeklyPay) + "\n";
-	    		}
-	    			
-//	    		String employee = toString();
-	    		
-//	    		if(weeklyPay < getMinimumWage()) {
-////	    			throw new PayrollException();
-//	    			
-//	    		}
-	    		
 	    	return payroll;
 	    	
-//    	} 	catch(PayrollException exp) {
-////	    		payroll = toString() + exp.toString();
-//	    		return payroll;
-//    		}
+    	} 	catch(PayrollException exp) {
+	    		payroll = exp.toString();
+	    		return payroll;
+    		}
     	}
 
 }
