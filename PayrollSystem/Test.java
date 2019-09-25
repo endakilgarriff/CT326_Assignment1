@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 public class Test {
 
     // test Employee hierarchy
-    public static void main(String args[]) throws Exception {
+    public static void main(String args[]) throws PayrollException {
         String output = "";
         Employee[] employeeArray = new Employee[6];
         
@@ -22,10 +22,15 @@ public class Test {
         employeeArray[4] = new HourlyWorker("Karen", "Price", "2014-01-13", 13.75, 40);
         employeeArray[5] = new HourlyWorker("Arthur", "Guinness", "2019-09-21", 7, 40);
         
-        	     // Calculate the weekly payroll for each employee
-    	        for(Employee employee :employeeArray) {
-    	        	output += employee.getPayroll();	
-    	        }
+        		try {
+	        	     // Calculate the weekly payroll for each employee
+	    	        for(Employee employee :employeeArray) {
+	    	        	output += employee.getPayroll();
+	    	        }
+        		}catch(PayrollException exp) {
+        			output += exp.toString();
+        		}
+        		
         
         // Dialog box with employee names and wage details
         JOptionPane.showMessageDialog(null, output,
