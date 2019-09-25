@@ -55,14 +55,11 @@ public abstract class Employee {
     public LocalDate getJoinDate() {
     	return joinDate;
     }
-
+    
+    // Builds string with basic employee details
     public String toString() {
         return firstName + ' ' + lastName + " ID: " + employeeId  + " - ";
     } 
-    
-    public int getNumEmployees() {
-    	return counter;
-    }
     
     public double getMinimumWage() {
     	return 40*10;
@@ -71,30 +68,38 @@ public abstract class Employee {
 
     public abstract double earnings() throws PayrollException;
     
-    // getPayroll method to check if employee is entitled to bonus  
-    //	and if they are underpaid.
+    // getPayroll method to check if employee is entitled to bonus and if they are under paid 
+    //	
       
+  
     public String getPayroll() throws PayrollException{
     	String payroll = "";
     	Period period = new Period(now, joinDate);
     	long diff = Math.abs(period.getYears()); // calculate the difference between 
     											  // current date and employee join date
     	
+    	// Try block where exception is possible
     	try {
 	    	double weeklyPay = earnings();
+	    	String employee = toString();
+	    	
+	    	// Checking if the employee earns minimum wage before €50 bonus
+	    	if(weeklyPay < getMinimumWage()) {
+	    		throw new PayrollException(employee);
+	    	}
+	    	
+	    	//Checks if employee is entitled to 5 year bonus
 	    	if(diff > 5) {
 	    			weeklyPay += 50;
 	    	} 
 	    	
-	    	String employee = toString();
+	    	// Build string of employee and their wages
 	    	payroll = toString() + " earned: $" 
 	    				+ precision2.format(weeklyPay) + "\n";
-
-	    	if(weeklyPay < getMinimumWage()) {
-	    		throw new PayrollException(employee);
-	    	}
-	    	return payroll;
 	    	
+	    	return payroll;
+	   
+	    // Handles exceptions that are thrown, returns details of error
     	}catch(PayrollException exp) {
 	    	payroll = exp.toString();
 	    	return payroll;

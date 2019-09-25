@@ -2,8 +2,6 @@
  * Student ID: 17351606
  */
 
-
-
 // Java extension packages
 import javax.swing.JOptionPane;
 
@@ -22,15 +20,12 @@ public class Test {
         employeeArray[4] = new HourlyWorker("Karen", "Price", "2014-01-13", 13.75, 40);
         employeeArray[5] = new HourlyWorker("Arthur", "Guinness", "2019-09-21", 7, 40);
         
-        		try {
-	        	     // Calculate the weekly payroll for each employee
+	        	    // Calculate the weekly payroll for each employee and adds to output string
+        			// Exception is handled in Employee class by getPayroll() method
 	    	        for(Employee employee :employeeArray) {
 	    	        	output += employee.getPayroll();
 	    	        }
-        		}catch(PayrollException exp) {
-        			output += exp.toString();
-        		}
-        		
+
         
         // Dialog box with employee names and wage details
         JOptionPane.showMessageDialog(null, output,
