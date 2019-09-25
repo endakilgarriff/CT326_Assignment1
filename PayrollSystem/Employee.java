@@ -72,27 +72,28 @@ public abstract class Employee {
     public abstract double earnings(); 
     
     // getPayroll method to check if employee is entitled to bonus  
-    //	and if they are under paid.
+    //	and if they are under paid. 
       
     public String getPayroll() throws PayrollException{
     	String payroll = "";
     	Period period = new Period(now, joinDate);
     	long diff = Math.abs(period.getYears()); // calculate the difference between 
     											  // current date and employee join date
-    	System.out.println("DATE: " + diff);
     	try {
 	    	double weeklyPay = earnings();
-	    	if(diff > 5) {
-	    			weeklyPay += 50;
-	    	} 
-	    	
 	    	String employee = toString();
-	    	payroll = toString() + " earned: $" 
-	    				+ precision2.format(weeklyPay) + "\n";
-
+	    	
 	    	if(weeklyPay < getMinimumWage()) {
 	    		throw new PayrollException(employee);
 	    	}
+	    	else if(diff > 5) {
+	    			weeklyPay += 50;
+	    	}
+	    	
+	    	payroll = toString() + " earned: $" 
+	    				+ precision2.format(weeklyPay) + "\n";
+
+
 	    	return payroll;
 	    	
     	}catch(PayrollException exp) {

@@ -18,7 +18,7 @@ public class Test {
         employeeArray[2] = new CommissionWorker( "Sue", "Jones", "2013-02-14", 400.0, 3.0, 150);
         employeeArray[3] = new CommissionWorker("Jack", "Daniels", "2019-09-21", 150, 1, 150);
         employeeArray[4] = new HourlyWorker("Karen", "Price", "2014-01-13", 13.75, 40);
-        employeeArray[5] = new HourlyWorker("Arthur", "Guinness", "2019-09-21", 7, 40);
+        employeeArray[5] = new HourlyWorker("Arthur", "Guinness", "2013-09-21", 9.5, 40);
         
         	     // Calculate the weekly payroll for each employee
     	        for(Employee employee :employeeArray) {
