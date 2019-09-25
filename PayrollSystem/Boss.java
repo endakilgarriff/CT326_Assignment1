@@ -20,7 +20,7 @@ public final class Boss extends Employee {
     }
 
     // get Boss's pay
-    public double earnings()  throws PayrollException{
+    public double earnings() {
         return weeklySalary;
     }
 

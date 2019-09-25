@@ -22,8 +22,8 @@ public abstract class Employee {
 	private static int counter = 1000;
 	private String firstName;
     private String lastName;
-    LocalDate joinDate = new LocalDate(); 	
-    LocalDate now = LocalDate.now();		// Current date object for 5 year check
+    private LocalDate joinDate = new LocalDate(); 	
+    private LocalDate now = LocalDate.now();		// Current date object for 5 year check
     
     DecimalFormat precision2 = new DecimalFormat("0.00");
 
@@ -69,17 +69,17 @@ public abstract class Employee {
     }
     
 
-    public abstract double earnings() throws PayrollException;
+    public abstract double earnings(); 
     
     // getPayroll method to check if employee is entitled to bonus  
-    //	and if they are underpaid.
+    //	and if they are under paid.
       
     public String getPayroll() throws PayrollException{
     	String payroll = "";
     	Period period = new Period(now, joinDate);
     	long diff = Math.abs(period.getYears()); // calculate the difference between 
     											  // current date and employee join date
-    	
+    	System.out.println("DATE: " + diff);
     	try {
 	    	double weeklyPay = earnings();
 	    	if(diff > 5) {

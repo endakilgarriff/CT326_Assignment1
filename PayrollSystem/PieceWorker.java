@@ -28,7 +28,7 @@ public final class PieceWorker extends Employee {
     }
 
     // determine PieceWorker's earnings
-    public double earnings() throws PayrollException {
+    public double earnings() {
     	return quantity * wagePerPiece;
     }
 

@@ -29,7 +29,7 @@ public final class HourlyWorker extends Employee {
     }
 
     // Get the HourlyWorker's pay
-    public double earnings() throws PayrollException {
+    public double earnings()  {
         return  wage * hours;
     }
     

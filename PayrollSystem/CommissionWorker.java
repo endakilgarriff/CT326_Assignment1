@@ -35,7 +35,7 @@ public final class CommissionWorker extends Employee {
     }
 
     // determine CommissionWorker's earnings
-    public double earnings() throws PayrollException {
+    public double earnings() {
         return salary + commission * quantity;
     }
 
