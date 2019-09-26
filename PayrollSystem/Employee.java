@@ -63,23 +63,20 @@ public abstract class Employee {
     
     public double getMinimumWage() {
     	return 40*10;
-    }
-    
+	}
 
-    public abstract double earnings() throws PayrollException;
-    
-    // getPayroll method to check if employee is entitled to bonus and if they are under paid 
-    //	
-      
-  
-    public String getPayroll() throws PayrollException{
-    	String payroll = "";
-    	Period period = new Period(now, joinDate);
-    	long diff = Math.abs(period.getYears()); // calculate the difference between 
+	public abstract double earnings() throws PayrollException;
+
+	// getPayroll method to check if employee is entitled to bonus and if they are
+	// under paid
+	//
+
+	public String getPayroll() throws PayrollException {
+		String payroll = "";
+		Period period = new Period(now, joinDate);
+		long diff = Math.abs(period.getYears()); // calculate the difference between
     											  // current date and employee join date
     	
-    	// Try block where exception is possible
-    	try {
 	    	double weeklyPay = earnings();
 	    	String employee = toString();
 	    	
@@ -99,10 +96,5 @@ public abstract class Employee {
 	    	
 	    	return payroll;
 	   
-	    // Handles exceptions that are thrown, returns details of error
-    	}catch(PayrollException exp) {
-	    	payroll = exp.toString();
-	    	return payroll;
-    	}
     }
 }
